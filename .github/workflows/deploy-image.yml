@@ -1,0 +1,20 @@
+on: push
+
+jobs:
+  deploy-kong-custom-image:
+    runs-on: ubuntu@latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: docker/login-action@v3
+        name: Login Docker Hub
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        name: Build and Push Image to Docker Hub
+        with:
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/kong-with-elk-plugin:${GITHUB_SHA}
+
