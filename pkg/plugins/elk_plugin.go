@@ -1,6 +1,8 @@
 package plugins
 
 import (
+	"log"
+
 	"github.com/Kong/go-pdk"
 )
 
@@ -20,6 +22,7 @@ func (elkp ElkPlugin) Log(kong *pdk.PDK) {
 
 	if err := kong.Log.Info("LOG PQP: ", logInfo); err != nil {
 		kong.Log.Alert(err)
+		log.Println(err)
 	}
 
 }
