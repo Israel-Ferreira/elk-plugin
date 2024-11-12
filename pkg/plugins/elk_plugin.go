@@ -20,6 +20,9 @@ func (elkp ElkPlugin) Log(kong *pdk.PDK) {
 		panic(err)
 	}
 
+
+	log.Println(elkp.ElasticSearchPassword)
+
 	if err := kong.Log.Info("LOG PQP: ", logInfo); err != nil {
 		kong.Log.Alert(err)
 		log.Println(err)
