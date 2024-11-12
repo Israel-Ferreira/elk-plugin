@@ -18,7 +18,7 @@ func (elkp ElkPlugin) Log(kong *pdk.PDK) {
 		panic(err)
 	}
 
-	kong.Log.Info(logInfo)
+	kong.Log.Info("LOG PQP: ", logInfo)
 
 }
 
